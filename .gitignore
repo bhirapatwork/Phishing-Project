@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# ข้อมูลใหญ่ ไม่เอาขึ้น GitHub (ให้คนอื่นดาวน์โหลดเองตามลิงก์ใน README)
+data/*
+!data/.gitkeep
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.vscode/
