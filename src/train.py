@@ -30,7 +30,8 @@ def main():
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.2, random_state=42, stratify=y)
 
-    model = RandomForestClassifier(n_estimators=200, random_state=42, n_jobs=-1)
+    model = RandomForestClassifier(n_estimators=100, max_depth=20,
+                               min_samples_leaf=5, random_state=42, n_jobs=-1)    
     model.fit(X_train, y_train)
 
     pred = model.predict(X_test)
@@ -38,7 +39,7 @@ def main():
     print("Confusion matrix:\n", confusion_matrix(y_test, pred))
 
     Path(args.out).parent.mkdir(parents=True, exist_ok=True)
-    joblib.dump({"model": model, "columns": list(X.columns)}, args.out)
+    joblib.dump({"model": model, "columns": list(X.columns)}, args.out, compress=3)
     print(f"Saved model -> {args.out}")
 
 
